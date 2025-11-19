@@ -18,9 +18,9 @@
       <img src="{{ receta.imagen.url }}" class="img-fluid mb-3" alt="{{ receta.nombre }}">
     {% endif %}
     <h4>Ingredientes</h4>
-    <p>{{ receta.ingredientes|linebreaks }}</p>
+    <p class="card-text">{{ receta.ingredientes|linebreaks }}</p>
     <h4>Instrucciones</h4>
-    <p>{{ receta.instrucciones|linebreaks }}</p>
+    <p class="card-text">{{ receta.instrucciones|linebreaks }}</p>
   </div>
   <div class="col-md-4">
     <div class="card p-3">
