@@ -1,0 +1,25 @@
+{% extends 'recipes/base.html' %}
+{% block title %}Contacto - MisRecetas{% endblock %}
+{% block content %}
+<h2>Contacto</h2>
+<form method="post" novalidate>
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="mb-3">
+    <label>Nombre</label>
+    {{ form.nombre }}
+    <div class="text-danger">{{ form.nombre.errors }}</div>
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    {{ form.email }}
+    <div class="text-danger">{{ form.email.errors }}</div>
+  </div>
+  <div class="mb-3">
+    <label>Mensaje</label>
+    {{ form.mensaje }}
+    <div class="text-danger">{{ form.mensaje.errors }}</div>
+  </div>
+  <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+{% endblock %}

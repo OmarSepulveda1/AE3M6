@@ -1,0 +1,32 @@
+{% extends 'recipes/base.html' %}
+{% block title %}Inicio - MisRecetas{% endblock %}
+{% block content %}
+<div class="jumbotron p-5 rounded bg-light mb-4">
+  <h1 class="display-5">Bienvenido a MisRecetas</h1>
+  <p class="lead">Explora recetas deliciosas, comparte sabores y aprende nuevas preparaciones.</p>
+  <a class="btn btn-primary" href="{% url 'recipes:recipe_list' %}">Ver todas las recetas</a>
+</div>
+
+<h2>Últimas recetas</h2>
+<div class="row">
+  {% for receta in recetas %}
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      {% if receta.imagen %}
+        <img src="{{ receta.imagen.url }}" class="card-img-top" alt="{{ receta.nombre }}">
+      {% else %}
+        <!-- fallback to site-wide placeholder SVG -->
+        <img src="/static/recipes/images/placeholder.svg" class="card-img-top" alt="Sin imagen">
+      {% endif %}
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ receta.nombre }}</h5>
+        <p class="card-text">{{ receta.ingredientes|truncatechars:100 }}</p>
+        <a href="{{ receta.get_absolute_url }}" class="btn btn-outline-primary mt-auto">Ver receta</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <p>No hay recetas todavía.</p>
+  {% endfor %}
+</div>
+{% endblock %}

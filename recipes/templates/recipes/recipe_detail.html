@@ -1,0 +1,21 @@
+{% extends 'recipes/base.html' %}
+{% block title %}{{ receta.nombre }} - MisRecetas{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h1>{{ receta.nombre }}</h1>
+    {% if receta.imagen %}
+      <img src="{{ receta.imagen.url }}" class="img-fluid mb-3" alt="{{ receta.nombre }}">
+    {% endif %}
+    <h4>Ingredientes</h4>
+    <p>{{ receta.ingredientes|linebreaks }}</p>
+    <h4>Instrucciones</h4>
+    <p>{{ receta.instrucciones|linebreaks }}</p>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3">
+      <p><strong>Fecha:</strong> {{ receta.creado_en|date:"d M Y" }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

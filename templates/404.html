@@ -1,0 +1,9 @@
+{% extends 'recipes/base.html' %}
+{% block title %}Página no encontrada{% endblock %}
+{% block content %}
+<div class="text-center">
+  <h1>404</h1>
+  <p>La receta que buscas no existe o fue movida.</p>
+  <a href="{% url 'recipes:index' %}" class="btn btn-primary">Volver al inicio</a>
+</div>
+{% endblock %}
