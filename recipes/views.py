@@ -16,6 +16,10 @@ class RecipeDetailView(DetailView):
     template_name = 'recipes/recipe_detail.html'
     context_object_name = 'receta'
 
+def lista_recetas(request):
+    recetas = Receta.objects.all()
+    return render(request, 'recipes/recipe_list.html', {'recetas': recetas})    
+
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)

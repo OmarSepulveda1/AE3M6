@@ -1,6 +1,16 @@
 {% extends 'recipes/base.html' %}
+{% load static %}
 {% block title %}{{ receta.nombre }} - MisRecetas{% endblock %}
 {% block content %}
+<div class="jumbotron bg-light p-4 p-md-5 rounded mb-4">
+  <div class="container">
+    <h1 class="display-4">{{ receta.nombre }}</h1>
+    {% if receta.descripcion %}
+      <p class="lead">{{ receta.descripcion|truncatechars:200 }}</p>
+    {% endif %}
+    <p class="text-muted mb-0">Publicado el {{ receta.creado_en|date:"d M Y" }}</p>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-8">
     <h1>{{ receta.nombre }}</h1>
